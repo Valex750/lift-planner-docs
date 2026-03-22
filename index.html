@@ -10,6 +10,13 @@
         h2 { margin-top: 40px; color: #007AFF; }
         .contact-box { background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #eee; }
     </style>
+    <script>
+      const userLang = navigator.language || navigator.userLanguage; 
+      if (userLang.startsWith('ru')) window.location.href = "./ru/";
+      else if (userLang.startsWith('he')) window.location.href = "./he/";
+      else if (userLang.startsWith('fr')) window.location.href = "./fr/";
+      else if (userLang.startsWith('it')) window.location.href = "./it/";
+    </script>
 </head>
 <body>
     <h1>Lift Planner</h1>
