@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Lift Planner User Manual</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f3f4f6;
+            --bg-accent: #eef2ff;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --text: #111827;
+            --text-muted: #475569;
+            --brand: #4f46e5;
+            --brand-strong: #3730a3;
+            --success: #15803d;
+            --border: #dbe3ef;
+            --shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0b1020;
+                --bg-accent: #131a32;
+                --surface: #111a2e;
+                --surface-soft: #17233f;
+                --text: #e2e8f0;
+                --text-muted: #94a3b8;
+                --brand: #818cf8;
+                --brand-strong: #a5b4fc;
+                --success: #4ade80;
+                --border: #27365a;
+                --shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--bg) 200px);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+        }
+
+        .container {
+            width: min(860px, 100%);
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 6px;
+        }
+
+        .hero p {
+            opacity: 0.95;
+            font-size: 0.98rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+        }
+
+        .card h2 {
+            font-size: 1.16rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .toc {
+            display: grid;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            color: var(--brand-strong);
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-weight: 600;
+            min-height: 44px;
+        }
+
+        .section {
+            scroll-margin-top: 12px;
+        }
+
+        .step {
+            border-left: 4px solid var(--brand);
+            padding-left: 12px;
+            margin-top: 8px;
+        }
+
+        .step h3 {
+            font-size: 1.02rem;
+            margin-bottom: 4px;
+        }
+
+        .list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .list li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: var(--brand);
+            font-weight: 700;
+        }
+
+        .tip {
+            margin-top: 10px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface-soft);
+            padding: 10px 12px;
+        }
+
+        .tip strong {
+            color: var(--brand-strong);
+        }
+
+        .success {
+            border-left: 4px solid var(--success);
+            padding-left: 12px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 16px 0 10px;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 720px) {
+            .container {
+                padding: 24px;
+            }
+
+            .hero, .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header class="hero">
+            <h1>Lift Planner User Manual</h1>
+            <p>From first launch and onboarding to completing your workout and reviewing progress.</p>
+        </header>
+
+        <section class="card">
+            <h2>How to use this guide</h2>
+            <p>Follow the same order as the app. Each section maps to a real screen and action flow.</p>
+            <nav class="toc" aria-label="Table of contents">
+                <a href="#onboarding">1. First Launch and Onboarding</a>
+                <a href="#home">2. Home and Main Navigation</a>
+                <a href="#setup">3. Setup Before First Workout</a>
+                <a href="#start-workout">4. Start a Workout Session</a>
+                <a href="#during-workout">5. During the Workout</a>
+                <a href="#finish">6. Finish and Save Workout</a>
+                <a href="#after">7. After Workout and Next Session</a>
+                <a href="#tiers">8. Pro and Trainer Benefits</a>
+                <a href="#troubleshooting">9. Common Issues</a>
+            </nav>
+        </section>
+
+        <section id="onboarding" class="card section">
+            <h2>1. First Launch and Onboarding</h2>
+            <div class="step">
+                <h3>Step 1: Welcome screen</h3>
+                <p>Open the app and review key features. If you already have data, use backup restore options on this screen.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2: Create your first profile</h3>
+                <ul class="list">
+                    <li>Tap <em>Get Started</em>.</li>
+                    <li>Enter your name.</li>
+                    <li>Select gender.</li>
+                    <li>Pick an avatar color.</li>
+                    <li>Tap <em>Create Profile</em>.</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>Tip:</strong> Lift Planner supports multiple users on one device. Each user has separate workout history and cycle progress.
+            </div>
+        </section>
+
+        <section id="home" class="card section">
+            <h2>2. Home and Main Navigation</h2>
+            <p>After onboarding, you land in the main tab interface:</p>
+            <ul class="list">
+                <li><strong>Home:</strong> active cycle, start or resume workout, quick actions.</li>
+                <li><strong>Exercises:</strong> browse exercise library and details.</li>
+                <li><strong>Inventory:</strong> manage available equipment and weights.</li>
+                <li><strong>Settings:</strong> app preferences, language, and support items.</li>
+            </ul>
+            <div class="tip">
+                <strong>Tip:</strong> Before your first session, complete inventory and cycle setup for accurate suggestions.
+            </div>
+        </section>
+
+        <section id="setup" class="card section">
+            <h2>3. Setup Before First Workout</h2>
+            <div class="step">
+                <h3>Step 1: Configure inventory</h3>
+                <p>Go to <em>Inventory</em> and add your equipment (barbell, dumbbells, machines, bodyweight options). Include realistic increments or fixed weight options. The app already includes starter inventory to help you begin quickly, and Pro unlocks a larger inventory selection.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2: Create a training cycle</h3>
+                <p>Return to <em>Home</em> and tap <em>Create Training Program</em>.</p>
+                <ul class="list">
+                    <li>Pick a system template, or create a custom cycle.</li>
+                    <li>Set cycle duration (typically 4-7 weeks).</li>
+                    <li>Review workout days and routine structure.</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>Step 3: Fill exercise slots</h3>
+                <p>Open cycle editor and assign exercises to all required slots. The workout button is enabled only when the cycle is ready.</p>
+            </div>
+        </section>
+
+        <section id="start-workout" class="card section">
+            <h2>4. Start a Workout Session</h2>
+            <div class="step">
+                <h3>Step 1: Start from Home</h3>
+                <p>Tap <em>Start Workout</em>. If a session is already active, use <em>Resume Workout</em>.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2: Choose routine</h3>
+                <p>Select today&apos;s routine from the routine selector. The app creates a workout session and opens the active workout screen.</p>
+            </div>
+            <div class="tip">
+                <strong>Note:</strong> The app can resume interrupted sessions, so you can continue later without losing logged data.
+            </div>
+        </section>
+
+        <section id="during-workout" class="card section">
+            <h2>5. During the Workout</h2>
+            <div class="step">
+                <h3>Workout screen overview</h3>
+                <ul class="list">
+                    <li>Header shows progress and elapsed time.</li>
+                    <li>Each exercise is shown as a card that can expand/collapse.</li>
+                    <li>You can open exercise details (notes, history, instructions).</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>Log sets and performance</h3>
+                <ul class="list">
+                    <li>Enter weight and reps for each set.</li>
+                    <li>You cannot manually mark a single set as skipped.</li>
+                    <li>Remaining sets are treated as skipped only when you finish an exercise early with sets still incomplete.</li>
+                    <li>Use exercise feedback flows when prompted.</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>Understand weekly RIR targets (and why they matter)</h3>
+                <p>Your cycle uses week-specific RIR targets (Reps In Reserve) to control training stress across the block. Some weeks are intentionally harder, while others are lighter to manage fatigue and improve progression quality.</p>
+                <ul class="list">
+                    <li>Lower RIR means you finish closer to failure (harder week).</li>
+                    <li>Higher RIR means you keep more reps in reserve (easier/recovery week).</li>
+                    <li>Aim to match the week&apos;s RIR target, not just lift the heaviest possible weight.</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>How to achieve target RIR in real sessions</h3>
+                <ul class="list">
+                    <li>Adjust load up or down so your last reps match the target effort.</li>
+                    <li>You can perform a different number of reps than suggested when needed.</li>
+                    <li>If suggested targets feel unrealistic, choose weights and reps that fit your actual performance today.</li>
+                    <li>Log what you really did; accurate logs are better than forcing incorrect targets.</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>First time doing an exercise</h3>
+                <p>On first exposure, the app may not have a suggested weight and may default reps to 10. You should set weight and reps yourself based on your current ability, while still trying to match the current week&apos;s RIR target.</p>
+            </div>
+            <div class="tip">
+                <strong>Crucial:</strong> post-exercise feedback teaches the app how the set actually felt and is a key input for next week&apos;s weight/rep suggestions. The more honest your feedback, the better your progression recommendations.
+            </div>
+            <div class="step">
+                <h3>Use workout menu actions</h3>
+                <ul class="list">
+                    <li><strong>Finish Workout:</strong> complete the session early or when done.</li>
+                    <li><strong>Reset Workout:</strong> clear current session entries and restart.</li>
+                    <li><strong>Abandon Workout:</strong> discard the current session.</li>
+                    <li><strong>Go to Home:</strong> leave the screen without losing an active session.</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>Important:</strong> to skip the rest of a workout, first start the workout session, then open the three-dot menu and tap <em>Finish Workout</em>.
+            </div>
+            <div class="tip">
+                <strong>Tip:</strong> Use the user switcher in the top bar if multiple people share the same device.
+            </div>
+        </section>
+
+        <section id="finish" class="card section">
+            <h2>6. Finish and Save Workout</h2>
+            <div class="step">
+                <h3>Step 1: Finish workout</h3>
+                <p>When all exercises are done, use <em>Finish Workout</em>. You can also finish early; the app confirms before completion if exercises remain.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2: Review summary</h3>
+                <p>You will see summary metrics such as completed exercises, total sets, duration, and total volume.</p>
+            </div>
+            <div class="step">
+                <h3>Step 3: Tap Done</h3>
+                <p>Tap <em>Done</em> to finalize and return to normal navigation. The session is saved and progress updates in your cycle.</p>
+            </div>
+            <div class="success">
+                <p><strong>Saved result:</strong> your session data becomes part of workout history and future progression calculations.</p>
+            </div>
+        </section>
+
+        <section id="after" class="card section">
+            <h2>7. After Workout and Next Session</h2>
+            <ul class="list">
+                <li>Return to <strong>Home</strong> to monitor cycle progress and completed workouts.</li>
+                <li>Open <strong>Exercises</strong> to review notes, history, and instructions per movement.</li>
+                <li>Update <strong>Inventory</strong> when your available weights change.</li>
+                <li>Adjust settings or switch users as needed.</li>
+            </ul>
+            <div class="tip">
+                <strong>Best practice:</strong> keep inventory and exercise notes up to date for better session quality and progression decisions.
+            </div>
+        </section>
+
+        <section id="tiers" class="card section">
+            <h2>8. Pro and Trainer Benefits</h2>
+            <div class="step">
+                <h3>Why upgrade from Free</h3>
+                <p>Upgrading unlocks advanced planning, customization, and user management features that make the app more flexible for long-term training.</p>
+            </div>
+            <div class="step">
+                <h3>Pro tier includes</h3>
+                <ul class="list">
+                    <li>All app features unlocked.</li>
+                    <li>Up to 3 user profiles.</li>
+                    <li>Custom exercises and custom equipment.</li>
+                    <li>Backup import and restore support.</li>
+                    <li>Custom training templates.</li>
+                    <li>Larger starter inventory than Free.</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h3>Trainer tier includes</h3>
+                <ul class="list">
+                    <li>Everything in Pro.</li>
+                    <li>Unlimited user profiles.</li>
+                    <li>Built for coaches and personal trainers managing multiple trainees.</li>
+                    <li>No trainee limits.</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>Upgrade path:</strong> you can start with Pro and later upgrade to Trainer when you need unlimited clients/profiles.
+            </div>
+        </section>
+
+        <section id="troubleshooting" class="card section">
+            <h2>9. Common Issues</h2>
+            <ul class="list">
+                <li><strong>Start Workout is disabled:</strong> add an active cycle and fill all required exercise slots.</li>
+                <li><strong>Wrong user data:</strong> switch active user from Home or workout top bar.</li>
+                <li><strong>Lost session screen:</strong> go to Home and tap <em>Resume Workout</em>.</li>
+                <li><strong>Need to restart session:</strong> open workout menu and use <em>Reset Workout</em>.</li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            Lift Planner - Start strong, train consistently, and progress week by week.
+        </footer>
+    </main>
+</body>
+</html>
